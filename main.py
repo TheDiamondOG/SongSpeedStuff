@@ -8,8 +8,6 @@ import subprocess
 from rich.console import Console
 import sys
 
-os.chdir("/mnt/sda1/CoolPython/CoolAudioCrap")
-
 console = Console()
 tmp_dir = "temp_pls_ignore"
 
