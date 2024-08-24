@@ -1,3 +1,5 @@
+#!/bin/python3
+
 from pydub import AudioSegment
 import os
 import shutil
@@ -96,8 +98,12 @@ def process_audio():
         path = args.file
         base_filename = os.path.basename(path).split('.')[0]
 
-    if not os.path.isfile(path):
-        console.print(f"File not found: {path}", style="red")
+    if path.replace(" ", "") != "":
+        if not os.path.isfile(path):
+            console.print(f"File not found: {path}", style="red")
+            exit(1)
+    else:
+        parser.print_help()
         exit(1)
 
     output_file = None
