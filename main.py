@@ -83,6 +83,8 @@ def download_audio(url):
     return title
 
 def process_audio():
+    if os.path.exists("output"):
+        os.mkdir("output")
     if os.path.isdir(tmp_dir):
         shutil.rmtree(tmp_dir)
     os.mkdir(tmp_dir)
