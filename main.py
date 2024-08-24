@@ -8,13 +8,15 @@ import subprocess
 from rich.console import Console
 import sys
 
+os.chdir("/mnt/sda1/CoolPython/CoolAudioCrap")
+
 console = Console()
 tmp_dir = "temp_pls_ignore"
 
 parser = argparse.ArgumentParser(description="Make audio cool without audacity")
 
-parser.add_argument("-f", "--file", help="File you want to modify song", required=False)
-parser.add_argument("-d", "--download", help="Download a video", required=False)
+parser.add_argument("-f", "--file", help="File you want to modify song", required=True)
+#parser.add_argument("-d", "--download", help="Download a video", required=False)
 parser.add_argument("-n", "--nightcore", help="Make a song a nightcore song", action="store_true", required=False)
 parser.add_argument("-s", "--slowed", help="Make a song a slowed song", action="store_true", required=False)
 parser.add_argument("-ser", "--sloweder", help="Make a song a slowed but slower song", action="store_true", required=False)
@@ -83,7 +85,7 @@ def download_audio(url):
     return title
 
 def process_audio():
-    if os.path.exists("output"):
+    if not os.path.exists("output"):
         os.mkdir("output")
     if os.path.isdir(tmp_dir):
         shutil.rmtree(tmp_dir)
@@ -92,11 +94,13 @@ def process_audio():
     path = ''
     base_filename = 'audio_file'
 
+    """
     if args.download:
         video_title = download_audio(args.download)
         path = tmp_dir + '/cool_audio.mp3'
         base_filename = video_title
-    elif args.file:
+    """
+    if args.file:
         path = args.file
         base_filename = os.path.basename(path).split('.')[0]
 
