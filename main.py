@@ -22,6 +22,7 @@ parser.add_argument("-o", "--output", help="Name of the output file", required=F
 
 args = parser.parse_args()
 
+
 def apply_effects(input_path, output_path, effect):
     sound = AudioSegment.from_file(input_path)
     if effect == "nightcore":
